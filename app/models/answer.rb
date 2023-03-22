@@ -2,6 +2,6 @@ class Answer < ApplicationRecord
   belongs_to :user
   belongs_to :ball
 
-  validates :content, inclusion: { in: %w(positive negative vague),
-    message: "%{value} is not a valid size" }
+  validates :answer_type, inclusion: { in: %w(positive negative vague),
+    message: "%{value} is not a valid type(positive/negative/vague)" }
 end
