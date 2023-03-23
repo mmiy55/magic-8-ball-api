@@ -16,21 +16,35 @@ The Magic 8 ball API
 <p><strong>#UPDATE:</strong> Update the name and/or comment of a specific magic ball (the creator of that magic ball only)</p>
 <h3>PATCH /api/v1/balls/:id</h3>
 <em> Usage: </em>
-curl <span class="nt">-i</span> <span class="nt">-X</span> PATCH                                        <span class="se">\</span>
-       <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span>              <span class="se">\</span>
-       <span class="nt">-H</span> <span class="s1">'X-User-Email: user@email.com'</span>               <span class="se">\</span>
-       <span class="nt">-H</span> <span class="s1">'X-User-Token: a6hYpzsfNJdYC6zEMxs3'</span>          <span class="se">\</span>
-       <span class="nt">-d</span> <span class="s1">'{ "ball": { "name": "New name", "comment": "New comment" } }'</span>    <span class="se">\</span>
-       http://localhost:3000/api/v1/balls/1
+curl -i -X PATCH                                        \
+       -H 'Content-Type: application/json'              \
+       -H 'X-User-Email: user@email.com'               \
+       -H 'X-User-Token: a6hYpzsfNJdYC6zEMxs3'          \
+       -d '{ "ball": { "name": "New name", "comment": "New comment" } }'    \
 <hr>
-        <p><strong>#CREATE:</strong> Create a new magic ball, with a name and comment to it (logged-in users only)</p>
-        <h3>POST /api/v1/balls</h3>
-        <hr>
-        <p><strong>#DESTROY:</strong> Delete a magic ball (the creator of that magic ball only)</p>
-        <h3>DELETE /api/v1/balls/:id</h3>
-        <hr>
+<p><strong>#CREATE:</strong> Create a new magic ball, with a name and comment to it (logged-in users only)</p>
+<h3>POST /api/v1/balls</h3>
+<em> Usage: </em>
+curl -i -X POST                                                              \
+     -H 'Content-Type: application/json'                                     \
+     -H 'X-User-Email: user@email.com'                                      \
+     -H 'X-User-Token: a6hYpzsfNJdYC6zEMxs3'                                 \
+     -d '{ "ball": { "name": "New name", "comment": "New comment" } }' \
+     http://localhost:3000/api/v1/balls
+<hr>
+<p><strong>#DESTROY:</strong> Delete a magic ball (the creator of that magic ball only)</p>
+<h3>DELETE /api/v1/balls/:id</h3>
+<em> Usage: </em>
+curl -i -X DELETE                               \
+     -H 'X-User-Email: user@email.com'         \
+     -H 'X-User-Token: a6hYpzsfNJdYC6zEMxs3'    \
+     http://localhost:3000/api/v1/balls/1
+<hr>
 
-
-
+Todo:
+<ul>
+       <li> Expand the seeds  </li>
+       <li> Add a answers #create  </li>
+</ul>
 
 Thanks to [Le Wagon coding bootcamp](https://www.lewagon.com) team for the rails app template [lewagon/rails-templates](https://github.com/lewagon/rails-templates)
