@@ -35,7 +35,8 @@ class Api::V1::BallsController < Api::V1::BaseController
   end
 
   def shake
-    @ball.answers
+    @answer = @ball.answers.sample
+    render :shake
   end
 
   private
