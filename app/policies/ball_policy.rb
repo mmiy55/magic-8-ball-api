@@ -11,6 +11,10 @@ class BallPolicy < ApplicationPolicy
     true
   end
 
+  def shake?
+    true
+  end
+
   def update?
     record.user == user
   end
