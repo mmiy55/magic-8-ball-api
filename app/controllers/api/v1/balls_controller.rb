@@ -1,5 +1,7 @@
 class Api::V1::BallsController < Api::V1::BaseController
-  before_action :set_ball, only: [ :show, :update ]
+  acts_as_token_authentication_handler_for User, except: [ :index, :show ]
+
+  before_action :set_ball, only: [ :show, :update, :destroy ]
   def index
     @balls = policy_scope(Ball)
   end
@@ -14,6 +16,22 @@ class Api::V1::BallsController < Api::V1::BaseController
     else
       render_error
     end
+  end
+
+  def create
+    @ball = Ball.new(ball_params)
+    @ball.user = current_user
+    authorize @ball
+    if @ball.save
+      render :show, status: :created
+    else
+      render_error
+    end
+  end
+
+  def destroy
+    @ball.destroy
+    head :no_content
   end
 
   private

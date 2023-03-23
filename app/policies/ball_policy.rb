@@ -10,4 +10,18 @@ class BallPolicy < ApplicationPolicy
   def show?
     true
   end
+
+  def update?
+    record.user == user
+  end
+
+  def create?
+    # any logged in user can create a ball
+    !user.nil?
+  end
+
+  def destroy?
+    update?
+  end
+
 end
