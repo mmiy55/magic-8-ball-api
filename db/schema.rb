@@ -10,19 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_22_133238) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_22_150712) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "answers", force: :cascade do |t|
     t.text "content"
-    t.string "type"
-    t.bigint "user_id", null: false
+    t.string "answer_type"
     t.bigint "ball_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["ball_id"], name: "index_answers_on_ball_id"
-    t.index ["user_id"], name: "index_answers_on_user_id"
   end
 
   create_table "balls", force: :cascade do |t|
@@ -30,6 +28,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_22_133238) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "comment"
     t.index ["user_id"], name: "index_balls_on_user_id"
   end
 
@@ -46,6 +45,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_22_133238) do
   end
 
   add_foreign_key "answers", "balls"
-  add_foreign_key "answers", "users"
   add_foreign_key "balls", "users"
 end
