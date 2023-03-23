@@ -8,7 +8,11 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
-      resources :balls, only: [ :index, :show, :update, :create, :destroy ]
+      resources :balls, only: [ :index, :update, :create, :destroy ]
+      resources :balls , only: [:show] do
+        get "shake", to: "balls#shake"
+      end
+
     end
   end
 end

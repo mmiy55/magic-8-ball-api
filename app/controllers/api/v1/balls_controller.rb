@@ -1,7 +1,7 @@
 class Api::V1::BallsController < Api::V1::BaseController
   acts_as_token_authentication_handler_for User, except: [ :index, :show ]
 
-  before_action :set_ball, only: [ :show, :update, :destroy ]
+  before_action :set_ball, only: [ :show, :update, :destroy, :shake ]
   def index
     @balls = policy_scope(Ball)
   end
@@ -32,6 +32,10 @@ class Api::V1::BallsController < Api::V1::BaseController
   def destroy
     @ball.destroy
     head :no_content
+  end
+
+  def shake
+    @ball.answers
   end
 
   private
