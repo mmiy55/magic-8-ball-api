@@ -50,6 +50,8 @@ gem "sassc-rails"
 
 # Add Pundit
 gem "pundit"
+# Authenticate user on update and delete actions
+gem 'simple_token_authentication'
 
 gem "devise"
 gem "autoprefixer-rails"
