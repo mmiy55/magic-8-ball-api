@@ -13,9 +13,16 @@ The Magic 8 ball API
 <h3>GET /api/v1/balls/:id</h3>
 <img width="701" alt="image" src="https://user-images.githubusercontent.com/70462015/227109627-a3be95da-4e9b-42f3-bdda-6978337959a8.png">
 <hr>
-        <p><strong>#UPDATE:</strong> Update the name and/or comment of a specific magic ball (the creator of that magic ball only)</p>
-        <h3>PATCH /api/v1/balls/:id</h3>
-        <hr>
+<p><strong>#UPDATE:</strong> Update the name and/or comment of a specific magic ball (the creator of that magic ball only)</p>
+<h3>PATCH /api/v1/balls/:id</h3>
+<em> Usage: ,/em>
+curl -i -X PATCH                                        \
+       -H 'Content-Type: application/json'              \
+       -H 'X-User-Email: user@wmail.com'               \
+       -H 'X-User-Token: a6hYpzsfNJdYC6zEMxs3'          \
+       -d '{ "ball": { "name": "New name", "comment": "New comment" } }'    \
+       http://localhost:3000/api/v1/balls/1
+<hr>
         <p><strong>#CREATE:</strong> Create a new magic ball, with a name and comment to it (logged-in users only)</p>
         <h3>POST /api/v1/balls</h3>
         <hr>
